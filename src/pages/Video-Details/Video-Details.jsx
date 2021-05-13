@@ -1,1 +1,6 @@
-export function VideoDetail() {}
+export function VideoDetail() {
+
+  return <>
+    <h1>Video Detail</h1>
+  </>
+}
