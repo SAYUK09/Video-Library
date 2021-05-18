@@ -18,6 +18,8 @@ import { VideoListing } from "./pages/Video-Listing/Video-Listing";
 import { VideoDetails } from "./pages/Video-Details/Video-Details";
 import { Playlist } from "./pages/Playlist/Playlist";
 
+import { Nav } from "./components/Nav/Nav";
+
 export default function App() {
   const { state, dispatch } = useVideos();
 
@@ -40,6 +42,7 @@ export default function App() {
   return (
     <div className="App">
       <Router>
+        <Nav />
         <Routes>
           <Route path="/" element={<VideoListing />} />
           <Route path="/playlists" element={<Playlist />} />
