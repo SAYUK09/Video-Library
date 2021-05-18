@@ -1,0 +1,36 @@
+.sidebarBody {
+  background-color: #f3f4f6;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100vh;
+  padding: 1rem;
+  position: fixed;
+  left: 0;
+
+  border-right: 1px solid #3b82f6;
+}
+
+.sidebarCategory {
+  display: flex;
+  padding: 1rem;
+  font-size: 1.3rem;
+  margin: 0.2rem;
+  align-items: center;
+}
+
+.sidebarCategory h5 {
+  margin: 0 0.5rem;
+}
+
+.sidebarCategory:hover {
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 0.5rem;
+}
+
+.routeLink {
+  text-decoration: none;
+  color: #3b82f6;
+}
