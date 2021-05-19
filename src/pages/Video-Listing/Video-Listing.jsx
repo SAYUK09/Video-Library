@@ -35,7 +35,15 @@ export function VideoListing() {
                     <FaThumbsUp className="like-icon" />
                   </button>
 
-                  <button className="like-button" onClick={() => {}}>
+                  <button
+                    className="like-button"
+                    onClick={() => {
+                      dispatch({
+                        type: "ADD_TO_WATCH_LATER",
+                        payload: vidObj
+                      });
+                    }}
+                  >
                     <FaRegClock className="like-icon" />
                   </button>
                 </div>

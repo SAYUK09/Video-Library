@@ -30,11 +30,11 @@
 }
 
 .videoImgDiv {
-  height: 50%;
+  height: 57%;
   width: 20rem;
 }
 
-.videoImgDiv img {
+.thumbnail-image {
   height: 100%;
   width: 100%;
   object-fit: cover;

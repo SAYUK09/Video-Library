@@ -36,6 +36,9 @@ export function LikedVideos() {
                   {/* <button className="horizFooterBtn secBtn" onClick={() => {}}>
                     
                   </button> */}
+                  <button className="horizFooterBtn " onClick={() => {}}>
+                    Play Video
+                  </button>
                   <button
                     onClick={() => {
                       dispatch({
@@ -43,7 +46,7 @@ export function LikedVideos() {
                         payload: vid
                       });
                     }}
-                    className="horizFooterBtn"
+                    className="horizFooterBtn secBtn"
                   >
                     <FaThumbsDown />
                   </button>
