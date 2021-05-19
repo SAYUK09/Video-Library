@@ -23,7 +23,15 @@ export function VideoListing() {
                 <small className="vid-category">{vidObj.category}</small>
 
                 <div className="vidBtnDiv">
-                  <button className="like-button" onClick={() => {}}>
+                  <button
+                    className="like-button"
+                    onClick={() => {
+                      dispatch({
+                        type: "ADD_TO_LIKED_VIDEOS",
+                        payload: vidObj
+                      });
+                    }}
+                  >
                     <FaThumbsUp className="like-icon" />
                   </button>
 

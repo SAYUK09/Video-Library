@@ -17,6 +17,8 @@ import { useVideos } from "./contexts/videoLibContext";
 import { VideoListing } from "./pages/Video-Listing/Video-Listing";
 import { VideoDetails } from "./pages/Video-Details/Video-Details";
 import { Playlist } from "./pages/Playlist/Playlist";
+import { LikedVideos } from "./pages/Liked-Videos/Liked-Videos";
+import { WatchLater } from "./pages/Watch-Later/Watch-Later";
 
 import { Nav } from "./components/Nav/Nav";
 import { Sidebar } from "./components/Sidebar/Sidebar";
@@ -49,6 +51,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<VideoListing />} />
           <Route path="/playlists" element={<Playlist />} />
+          <Route path="/likedvideos" element={<LikedVideos />} />
+          <Route path="/watchlater" element={<WatchLater />} />
+
           <Route path="/VideoDetails/:id" element={<VideoDetails />} />
         </Routes>
       </Router>

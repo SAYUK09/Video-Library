@@ -25,15 +25,15 @@ export function Nav() {
         </div>
         <input className="navSearchBar" placeholder="🔎Search something" />
         <div className="navIcons">
-          <Link className="routeLink" to="/">
+          <Link className="navRouteLink" to="/">
             <BsPlayFill />
           </Link>
           &nbsp;
-          <Link className="routeLink" to="/playlists">
+          <Link className="navRouteLink" to="/playlists">
             <CgPlayListAdd />
           </Link>
           &nbsp;
-          <Link className="routeLink" to="/">
+          <Link className="navRouteLink" to="/">
             <BsFillClockFill />
           </Link>
           &nbsp;
