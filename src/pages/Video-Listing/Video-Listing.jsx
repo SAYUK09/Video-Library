@@ -3,6 +3,8 @@ import "./Video-Listing.css";
 import { useVideos } from "../../contexts/videoLibContext";
 import { FaThumbsUp, FaRegClock, FaBorderNone } from "react-icons/fa";
 
+import { axiosAddToLikedVideos } from "../../utility/likedVideos.utility";
+
 export function VideoListing() {
   const { state, dispatch } = useVideos();
 
@@ -26,10 +28,11 @@ export function VideoListing() {
                   <button
                     className="like-button"
                     onClick={() => {
-                      dispatch({
-                        type: "ADD_TO_LIKED_VIDEOS",
-                        payload: vidObj
-                      });
+                      axiosAddToLikedVideos(vidObj, dispatch);
+                      // dispatch({
+                      //   type: "ADD_TO_LIKED_VIDEOS",
+                      //   payload: vidObj
+                      // });
                     }}
                   >
                     <FaThumbsUp className="like-icon" />
