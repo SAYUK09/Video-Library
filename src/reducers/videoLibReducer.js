@@ -9,11 +9,16 @@ export function vidLibReducer(vidRedcState, action) {
     case "SET_LIKED_VIDEOS":
       return { ...vidRedcState, likedVideos: action.payload };
 
+    case "SET_WATCH_LATER":
+      return { ...vidRedcState, watchLater: action.payload };
+      break;
+
     case "ADD_TO_LIKED_VIDEOS":
       return {
         ...vidRedcState,
         likedVideos: [...vidRedcState.likedVideos, action.payload]
       };
+
     case "REMOVE_FROM_LIKED_VIDEOS":
       return {
         ...vidRedcState,

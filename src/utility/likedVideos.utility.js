@@ -22,11 +22,16 @@ export function axiosAddToLikedVideos(video, dispatch) {
   })();
 }
 
-// {
-//   thumbnail: {video.thumbnail},
-//   videoURL: {video.videoURL},
-//   title: {video.title},
-//   description: {video.description},
-//   category:{video.category},
-//   channel: {video.channel},
-// }
+export function axiosRemoveFromLikedVideos(video, dispatch) {
+  (async function () {
+    try {
+      const response = await axios.delete(
+        `https://vid-lib-backend.sayuk.repl.co/likedvideos/${video._id}`
+      );
+
+      dispatch({ type: "SET_LIKED_VIDEOS", payload: response.data });
+    } catch (error) {
+      console.log(error);
+    }
+  })();
+}

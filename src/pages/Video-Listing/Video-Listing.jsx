@@ -4,6 +4,7 @@ import { useVideos } from "../../contexts/videoLibContext";
 import { FaThumbsUp, FaRegClock, FaBorderNone } from "react-icons/fa";
 
 import { axiosAddToLikedVideos } from "../../utility/likedVideos.utility";
+import { axiosAddToWatchLater } from "../../utility/watchLater.utility";
 
 export function VideoListing() {
   const { state, dispatch } = useVideos();
@@ -41,10 +42,11 @@ export function VideoListing() {
                   <button
                     className="like-button"
                     onClick={() => {
-                      dispatch({
-                        type: "ADD_TO_WATCH_LATER",
-                        payload: vidObj
-                      });
+                      axiosAddToWatchLater(vidObj, dispatch);
+                      // dispatch({
+                      //   type: "ADD_TO_WATCH_LATER",
+                      //   payload: vidObj
+                      // });
                     }}
                   >
                     <FaRegClock className="like-icon" />

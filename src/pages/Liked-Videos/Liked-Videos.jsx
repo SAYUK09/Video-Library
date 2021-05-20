@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useVideos } from "../../contexts/videoLibContext";
 import { FaThumbsDown, FaRegClock, FaBorderNone } from "react-icons/fa";
-import { axiosAddToLikedVideos } from "../../utility/likedVideos.utility";
+import { axiosRemoveFromLikedVideos } from "../../utility/likedVideos.utility";
 
 export function LikedVideos() {
   const { state, dispatch } = useVideos();
@@ -20,7 +20,7 @@ export function LikedVideos() {
         console.log("Error!!!", err);
       }
     })();
-  }, [state.likedVideos]);
+  }, []);
 
   return (
     <>
@@ -47,10 +47,11 @@ export function LikedVideos() {
                   </button>
                   <button
                     onClick={() => {
-                      dispatch({
-                        type: "REMOVE_FROM_LIKED_VIDEOS",
-                        payload: vid
-                      });
+                      axiosRemoveFromLikedVideos(vid, dispatch);
+                      // dispatch({
+                      //   type: "REMOVE_FROM_LIKED_VIDEOS",
+                      //   payload: vid
+                      // });
                     }}
                     className="horizFooterBtn secBtn"
                   >
