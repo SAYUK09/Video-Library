@@ -3,7 +3,7 @@
 }
 
 .vidListingParent {
-  padding: 1rem 0;
+  padding: 1rem;
   margin-top: 10vh;
   min-height: 90vh;
   background-color: #f3f4f6;
@@ -19,7 +19,7 @@
 }
 
 .vidCardBody {
-  height: 19rem;
+  height: 20rem;
   overflow-y: hidden;
   width: 20rem;
   margin: 1rem;
@@ -30,7 +30,7 @@
 }
 
 .videoImgDiv {
-  height: 57%;
+  height: 100%;
   width: 20rem;
 }
 
@@ -47,6 +47,10 @@
   padding-bottom: 0;
   color: #3b82f6;
   flex-grow: 1;
+}
+
+.videoDetailRoute {
+  text-decoration: none;
 }
 
 .vidBtnDiv {

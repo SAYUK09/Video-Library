@@ -15,14 +15,14 @@ import {
 import { useVideos } from "./contexts/videoLibContext";
 
 import { VideoListing } from "./pages/Video-Listing/Video-Listing";
-import { VideoDetails } from "./pages/Video-Details/Video-Details";
+import { VideoDetail } from "./pages/Video-Details/Video-Details";
 import { Playlist } from "./pages/Playlist/Playlist";
 import { LikedVideos } from "./pages/Liked-Videos/Liked-Videos";
 import { WatchLater } from "./pages/Watch-Later/Watch-Later";
 
 import { Nav } from "./components/Nav/Nav";
 import { Sidebar } from "./components/Sidebar/Sidebar";
-
+import {Modal} from "./components/Modal/Modal"
 export default function App() {
   const { state, dispatch } = useVideos();
 
@@ -54,9 +54,10 @@ export default function App() {
           <Route path="/likedvideos" element={<LikedVideos />} />
           <Route path="/watchlater" element={<WatchLater />} />
 
-          <Route path="/VideoDetails/:id" element={<VideoDetails />} />
+          <Route path="/videodetails/:id" element={<VideoDetail />} />
         </Routes>
       </Router>
+      
     </div>
   );
 }

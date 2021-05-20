@@ -1,8 +1,9 @@
 import "./Watch-Later.css";
 import { useVideos } from "../../contexts/videoLibContext";
-import { FaThumbsDown, FaRegClock, FaBorderNone } from "react-icons/fa";
+import { FaThumbsDown } from "react-icons/fa";
 import { useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import { axiosRemoveFromWatchLater } from "../../utility/watchLater.utility";
 
@@ -22,7 +23,7 @@ export function WatchLater() {
   }, []);
 
   const { state, dispatch } = useVideos();
-  console.log(state.watchLater, "wwwt");
+
   return (
     <>
       <div className="watchLaterParent">
@@ -31,16 +32,22 @@ export function WatchLater() {
             return (
               <div key={vid._id} className="horizCardParent">
                 <div className="horizCardBody">
-                  <div className="HorizImgDiv">
-                    <img src={vid.thumbnail} />
-                  </div>
-                  <div className="HorizCardDetails">
-                    <div className="brandTitle">{vid.title}</div>
-
-                    <div className="prdPrice">
-                      <b> </b>
+                  <Link
+                    className="videoDetailRoute"
+                    to={`/videodetails/${vid.videoURL}`}
+                  >
+                    <div className="HorizImgDiv">
+                      <img src={vid.thumbnail} />
                     </div>
-                  </div>
+                  </Link>
+                  <Link
+                    className="videoDetailRoute"
+                    to={`/videodetails/${vid.videoURL}`}
+                  >
+                    <div className="HorizCardDetails">
+                      <div className="brandTitle">{vid.title}</div>
+                    </div>
+                  </Link>
                 </div>
                 <div className="horizCardFooter">
                   <button className="horizFooterBtn " onClick={() => {}}>
