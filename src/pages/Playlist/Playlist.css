@@ -1,0 +1,8 @@
+.plalistParent {
+  padding: 1rem 0;
+  margin-top: 10vh;
+  min-height: 90vh;
+  background-color: #f3f4f6;
+  margin-left: 20%;
+  overflow-x: hidden;
+}

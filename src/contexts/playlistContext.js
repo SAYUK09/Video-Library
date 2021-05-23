@@ -1,6 +1,7 @@
 import React from "react";
 import { createContext, useContext, useReducer, useState } from "react";
 import uuid from "react-uuid";
+import { playlistReducer } from "../reducers/playlistReducer";
 
 export const PlaylistContext = createContext();
 
@@ -19,5 +20,3 @@ export function PlaylistProvider({ children }) {
 export function usePlaylist() {
   return useContext(PlaylistContext);
 }
-
-function playlistReducer() {}

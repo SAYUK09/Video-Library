@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Video-Listing.css";
 import { Link } from "react-router-dom";
 import { useVideos } from "../../contexts/videoLibContext";
 import { FaThumbsUp, FaRegClock, FaBorderNone } from "react-icons/fa";
-
+import { CgPlayListAdd } from "react-icons/cg";
 import { axiosAddToLikedVideos } from "../../utility/likedVideos.utility";
 import { axiosAddToWatchLater } from "../../utility/watchLater.utility";
+import { Modal } from "../../components/Modal/Modal";
+import { usePlaylist } from "../../contexts/playlistContext";
 
 export function VideoListing() {
   const { state, dispatch } = useVideos();
+  const { playlistState, playlistDispatch } = usePlaylist();
 
+  const [showModal, setShowModal] = useState(false);
+  const [newPlaylist, setNewPlaylist] = useState("");
+  const [videoToAdd, setVideoToAdd] = useState({});
+  console.log(videoToAdd);
   return (
     <>
       <div className="vidListingParent">
         <div className="vidBody">
+          {showModal && (
+            <Modal
+              newPlaylist={newPlaylist}
+              setNewPlaylist={setNewPlaylist}
+              video={videoToAdd}
+            />
+          )}
           {state.videos.map((vidObj) => {
             return (
               <div key={vidObj._id} className="vidCardBody">
@@ -41,10 +55,6 @@ export function VideoListing() {
                     className="like-button"
                     onClick={() => {
                       axiosAddToLikedVideos(vidObj, dispatch);
-                      // dispatch({
-                      //   type: "ADD_TO_LIKED_VIDEOS",
-                      //   payload: vidObj
-                      // });
                     }}
                   >
                     <FaThumbsUp className="like-icon" />
@@ -54,13 +64,19 @@ export function VideoListing() {
                     className="like-button"
                     onClick={() => {
                       axiosAddToWatchLater(vidObj, dispatch);
-                      // dispatch({
-                      //   type: "ADD_TO_WATCH_LATER",
-                      //   payload: vidObj
-                      // });
                     }}
                   >
                     <FaRegClock className="like-icon" />
+                  </button>
+
+                  <button
+                    className="like-button"
+                    onClick={() => {
+                      setShowModal(!showModal);
+                      setVideoToAdd(vidObj);
+                    }}
+                  >
+                    <CgPlayListAdd className="like-icon" />
                   </button>
                 </div>
               </div>
