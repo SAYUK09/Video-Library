@@ -26,6 +26,7 @@ export function VideoListing() {
               newPlaylist={newPlaylist}
               setNewPlaylist={setNewPlaylist}
               video={videoToAdd}
+              setShowModal={setShowModal}
             />
           )}
           {state.videos.map((vidObj) => {
