@@ -20,3 +20,9 @@
 .navSearchBar {
   padding: 0.5rem;
 }
+
+.appName {
+  color: white;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+}

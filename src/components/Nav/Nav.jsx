@@ -20,6 +20,9 @@ export function Nav() {
   return (
     <div>
       <nav className="nav1">
+        <Link className="navRouteLink" to="/">
+          <div className="appName">BroadPod</div>
+        </Link>
         <div className="logo">
           <img className="navLogo" src="" />
         </div>

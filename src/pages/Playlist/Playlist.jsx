@@ -73,7 +73,7 @@ export function Playlist() {
                           <h5>{vid.title}</h5>
                         </div>
                       </Link>
-                      <button
+                      {/* <button
                         onClick={() => {
                           console.log(
                             playlistVideos._id,
@@ -84,7 +84,7 @@ export function Playlist() {
                         }}
                       >
                         Remove
-                      </button>
+                      </button> */}
                     </div>
                   </>
                 );
