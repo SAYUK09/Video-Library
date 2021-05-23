@@ -1,7 +1,7 @@
 import "./Modal.css";
 import { usePlaylist } from "../../contexts/playlistContext";
 import {
-  addVideoToPlaylist,
+  axiosAddVideoToPlaylist,
   axiosAddNewPlaylist
 } from "../../utility/playlist.utility";
 import axios from "axios";
@@ -62,7 +62,7 @@ export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
                   <p>{item.name}</p>
                   <button
                     onClick={() => {
-                      addVideoToPlaylist(item, video, playlistDispatch);
+                      axiosAddVideoToPlaylist(item, video, playlistDispatch);
                     }}
                   >
                     Add

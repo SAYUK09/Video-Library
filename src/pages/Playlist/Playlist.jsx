@@ -2,7 +2,10 @@ import "./Playlist.css";
 import { usePlaylist } from "../../contexts/playlistContext";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { axiosRemovePlaylist } from "../../utility/playlist.utility";
+import {
+  axiosDeleteVideoFromPlaylist,
+  axiosRemovePlaylist
+} from "../../utility/playlist.utility";
 import { Link } from "react-router-dom";
 
 export function Playlist() {
@@ -54,25 +57,34 @@ export function Playlist() {
           <div className="playlistVideos">
             {playlistVideos &&
               playlistVideos.videos.map((vid) => {
-                console.log(vid);
+                console.log(vid, "cid");
 
                 return (
                   <>
                     <div className="videoCard">
                       <Link
                         className="videoRouterLink"
-                        to={`/videodetails/${vid.video.videoURL}`}
+                        to={`/videodetails/${vid.videoURL}`}
                       >
                         <div className="videoMainCard">
                           <div className="videoImgDiv">
-                            <img
-                              className="video-image"
-                              src={vid.video.thumbnail}
-                            />
+                            <img className="video-image" src={vid.thumbnail} />
                           </div>
-                          <h5>{vid.video.title}</h5>
+                          <h5>{vid.title}</h5>
                         </div>
                       </Link>
+                      <button
+                        onClick={() => {
+                          console.log(
+                            playlistVideos._id,
+                            vid._id,
+                            "lLlALALALA"
+                          );
+                          axiosDeleteVideoFromPlaylist(playlistVideos, vid);
+                        }}
+                      >
+                        Remove
+                      </button>
                     </div>
                   </>
                 );
