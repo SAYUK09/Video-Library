@@ -6,3 +6,31 @@
   margin-left: 20%;
   overflow-x: hidden;
 }
+
+.playlistBody {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.playlistCard {
+  width: 70%;
+  padding: 1rem;
+  border-right: 1px solid #3b82f6;
+  margin: 0.5rem;
+}
+
+.playlistVideos {
+  width: 15rem;
+  padding: 0.5rem 1rem;
+}
+
+.videoCard h5 {
+  /* padding: 0.5rem; */
+}
+
+.video-image {
+  width: 15vw;
+}
+.videoMainCard {
+  margin-bottom: 0.5rem;
+}
