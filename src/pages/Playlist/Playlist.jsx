@@ -31,20 +31,20 @@ export function Playlist() {
             {playlistState.playlist.map((item) => {
               return (
                 <>
-                  <div className="playlistListing">
-                    <h1
+                  <div className="playlistLister">
+                    <h3
                       onClick={() => {
                         setPlaylistVideos(item);
                       }}
                     >
                       {item.name}
-                    </h1>
+                    </h3>
                     <button
                       onClick={() => {
                         axiosRemovePlaylist(item, playlistDispatch);
                       }}
                     >
-                      REMOVE
+                      X
                     </button>
                   </div>
                 </>
@@ -59,7 +59,10 @@ export function Playlist() {
                 return (
                   <>
                     <div className="videoCard">
-                      <Link to={`/videodetails/${vid.video.videoURL}`}>
+                      <Link
+                        className="videoRouterLink"
+                        to={`/videodetails/${vid.video.videoURL}`}
+                      >
                         <div className="videoMainCard">
                           <div className="videoImgDiv">
                             <img
@@ -67,9 +70,9 @@ export function Playlist() {
                               src={vid.video.thumbnail}
                             />
                           </div>
+                          <h5>{vid.video.title}</h5>
                         </div>
                       </Link>
-                      <h5>{vid.video.title}</h5>
                     </div>
                   </>
                 );
