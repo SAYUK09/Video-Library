@@ -11,6 +11,7 @@ import { WatchLater } from "./pages/Watch-Later/Watch-Later";
 import { Nav } from "./components/Nav/Nav";
 import { Sidebar } from "./components/Sidebar/Sidebar";
 import { Signup } from "./pages/signup/signup";
+import { Login } from "./pages/Login/Login";
 
 export default function App() {
   const { state, dispatch } = useVideos();
@@ -42,7 +43,8 @@ export default function App() {
           <Route path="/likedvideos" element={<LikedVideos />} />
           <Route path="/watchlater" element={<WatchLater />} />
           <Route path="/signup" element={<Signup />} />
-
+          <Route path="/login" element={<Login />} />
+          Pag
           <Route path="/videodetails/:id" element={<VideoDetail />} />
         </Routes>
       </Router>
