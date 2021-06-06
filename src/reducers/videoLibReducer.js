@@ -1,6 +1,6 @@
 import { AiTwotoneInfoCircle } from "react-icons/ai";
 
-export function vidLibReducer(vidRedcState, action) {
+export function videoLibraryReducer(vidRedcState, action) {
   switch (action.type) {
     case "SET_VIDEOS":
       return { ...vidRedcState, videos: action.payload };
@@ -16,7 +16,7 @@ export function vidLibReducer(vidRedcState, action) {
     case "ADD_TO_LIKED_VIDEOS":
       return {
         ...vidRedcState,
-        likedVideos: [...vidRedcState.likedVideos, action.payload]
+        likedVideos: [...vidRedcState.likedVideos, action.payload],
       };
 
     case "REMOVE_FROM_LIKED_VIDEOS":
@@ -24,7 +24,7 @@ export function vidLibReducer(vidRedcState, action) {
         ...vidRedcState,
         likedVideos: vidRedcState.likedVideos.filter(
           (item) => item._id !== action.payload._id
-        )
+        ),
       };
       break;
 
@@ -32,7 +32,7 @@ export function vidLibReducer(vidRedcState, action) {
       console.log("addd");
       return {
         ...vidRedcState,
-        watchLater: [...vidRedcState.watchLater, action.payload]
+        watchLater: [...vidRedcState.watchLater, action.payload],
       };
       break;
 
@@ -41,7 +41,7 @@ export function vidLibReducer(vidRedcState, action) {
         ...vidRedcState,
         watchLater: vidRedcState.watchLater.filter(
           (item) => item._id !== action.payload._id
-        )
+        ),
       };
 
     default:

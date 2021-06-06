@@ -1,15 +1,15 @@
 import React from "react";
 import { createContext, useContext, useReducer, useState } from "react";
 
-import { vidLibReducer } from "../reducers/videoLibReducer";
+import { videoLibraryReducer } from "../reducers/videoLibReducer";
 
 export const VideosContext = createContext();
 
 export function VideosProvider({ children }) {
-  const [state, dispatch] = useReducer(vidLibReducer, {
+  const [state, dispatch] = useReducer(videoLibraryReducer, {
     likedVideos: [],
     watchLater: [],
-    videos: []
+    videos: [],
   });
 
   return (
