@@ -2,7 +2,7 @@ import "./Modal.css";
 import { usePlaylist } from "../../contexts/playlistContext";
 import {
   axiosAddVideoToPlaylist,
-  axiosAddNewPlaylist
+  axiosAddNewPlaylist,
 } from "../../utility/playlist.utility";
 import axios from "axios";
 import { useEffect } from "react";
@@ -15,7 +15,7 @@ export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
         const response = await axios.get(
           "https://vid-lib-backend.sayuk.repl.co/playlist"
         );
-        console.log(response.data);
+
         playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
       } catch (error) {
         console.log(error);

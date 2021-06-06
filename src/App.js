@@ -21,7 +21,6 @@ export default function App() {
           "https://Vid-Lib-Backend.sayuk.repl.co/videos"
         );
 
-        console.log(response.data);
         const videos = response.data;
         dispatch({ type: "SET_VIDEOS", payload: videos });
       } catch (err) {

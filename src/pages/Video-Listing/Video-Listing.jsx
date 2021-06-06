@@ -16,7 +16,7 @@ export function VideoListing() {
   const [showModal, setShowModal] = useState(false);
   const [newPlaylist, setNewPlaylist] = useState("");
   const [videoToAdd, setVideoToAdd] = useState({});
-  console.log(videoToAdd);
+
   return (
     <>
       <div className="vidListingParent">

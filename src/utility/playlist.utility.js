@@ -8,8 +8,7 @@ export const axiosAddNewPlaylist = (newPlaylist, playlistDispatch) => {
 
         { name: newPlaylist, videos: [] }
       );
-      console.log(newPlaylist);
-      console.log(response.data);
+
       playlistDispatch({ type: "CREATE_PLAYLIST", payload: response.data });
     } catch (error) {
       console.log(error);
@@ -37,11 +36,9 @@ export function axiosAddVideoToPlaylist(playlist, video, playlistDispatch) {
       const response = await axios.post(
         `https://Vid-Lib-Backend.sayuk.repl.co/playlist/update/${playlist._id}`,
         {
-          video: video
+          video: video,
         }
       );
-
-      console.log(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -50,19 +47,14 @@ export function axiosAddVideoToPlaylist(playlist, video, playlistDispatch) {
 
 export function axiosDeleteVideoFromPlaylist(playlist, video) {
   (async function () {
-    console.log(playlist._id);
-    console.log(video._id);
-
     try {
       const response = await axios.delete(
         "https://Vid-Lib-Backend.sayuk.repl.co/playlist/delete",
         {
           playlistId: "60aa2bc1e9b21501dd28e0f9",
-          videoId: "60a36cb508c6be01521306e3"
+          videoId: "60a36cb508c6be01521306e3",
         }
       );
-
-      console.log(response.data);
     } catch (err) {
       console.log(err);
     }
