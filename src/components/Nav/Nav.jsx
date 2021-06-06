@@ -3,13 +3,13 @@ import {
   CgPlayListAdd,
   CgPlayButton,
   CgHeart,
-  CgMediaPodcast
+  CgMediaPodcast,
 } from "react-icons/cg";
 import {
   BsFillClockFill,
   BsList,
   BsMusicNoteList,
-  BsPlayFill
+  BsPlayFill,
 } from "react-icons/bs";
 import { AiFillLike } from "react-icons/ai";
 
@@ -31,15 +31,14 @@ export function Nav() {
           <Link className="navRouteLink" to="/">
             <BsPlayFill />
           </Link>
-          &nbsp;
+
           <Link className="navRouteLink" to="/playlists">
             <CgPlayListAdd />
           </Link>
-          &nbsp;
+
           <Link className="navRouteLink" to="/">
             <BsFillClockFill />
           </Link>
-          &nbsp;
         </div>
       </nav>
     </div>
