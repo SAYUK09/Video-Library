@@ -12,9 +12,11 @@ import { Nav } from "./components/Nav/Nav";
 import { Sidebar } from "./components/Sidebar/Sidebar";
 import { Signup } from "./pages/signup/signup";
 import { Login } from "./pages/Login/Login";
+import { useToast } from "./contexts/toastContext";
 
 export default function App() {
   const { state, dispatch } = useVideos();
+  const { ToastContainer } = useToast();
 
   useEffect(() => {
     (async function () {
