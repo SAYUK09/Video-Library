@@ -5,15 +5,18 @@ import App from "./App";
 
 import { VideosProvider } from "./contexts/videoLibContext";
 import { PlaylistProvider } from "./contexts/playlistContext";
+import { ToastProvider } from "./contexts/toastContext";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <StrictMode>
-    <VideosProvider>
-      <PlaylistProvider>
-        <App />
-      </PlaylistProvider>
-    </VideosProvider>
+    <ToastProvider>
+      <VideosProvider>
+        <PlaylistProvider>
+          <App />
+        </PlaylistProvider>
+      </VideosProvider>
+    </ToastProvider>
   </StrictMode>,
   rootElement
 );
