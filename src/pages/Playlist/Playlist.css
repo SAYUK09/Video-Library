@@ -1,0 +1,60 @@
+.plalistParent {
+  padding: 1rem 0;
+  margin-top: 10vh;
+  min-height: 90vh;
+  background-color: #f3f4f6;
+  margin-left: 20%;
+  overflow-x: hidden;
+}
+
+.playlistBody {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.playlistCard {
+  width: 60%;
+  padding: 1rem;
+  border-right: 1px solid #3b82f6;
+  margin: 0.5rem;
+}
+
+.playlistLister {
+  display: flex;
+  justify-content: space-between;
+  background-color: #dbdde0;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.playlistLister button {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  border: 2px solid #3b82f6;
+  cursor: pointer;
+}
+
+.playlistVideos {
+  width: 20rem;
+  padding: 0.5rem 1rem;
+}
+
+.videoCard {
+  margin-top: 1rem;
+}
+
+.video-image {
+  width: 100%;
+}
+.videoMainCard {
+  margin: 0.5rem 0;
+}
+
+.videoRouterLink {
+  text-decoration: none;
+  color: black;
+}

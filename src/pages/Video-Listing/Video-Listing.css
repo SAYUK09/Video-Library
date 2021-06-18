@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+}
+
+.vidListingParent {
+  padding: 1rem;
+  margin-top: 10vh;
+  min-height: 90vh;
+  background-color: #f3f4f6;
+  margin-left: 20%;
+  overflow-x: hidden;
+}
+
+.vidBody {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  justify-items: center;
+  align-items: center;
+}
+
+.vidCardBody {
+  height: 20rem;
+  overflow-y: hidden;
+  width: 20rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.videoImgDiv {
+  height: 100%;
+  width: 20rem;
+}
+
+.thumbnail-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.vidCardBody h4 {
+  margin: 0;
+  text-align: start;
+  padding: 0.5rem 0;
+  padding-bottom: 0;
+  color: #3b82f6;
+  flex-grow: 1;
+}
+
+.videoDetailRoute {
+  text-decoration: none;
+}
+
+.vidBtnDiv {
+  padding: 0.5rem 0.2rem;
+}
+
+.like-button {
+  border: none;
+  font-size: 1.2rem;
+  background: transparent;
+  cursor: pointer;
+  padding-right: 1rem;
+  color: #3b82f6;
+}

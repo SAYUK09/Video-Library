@@ -1,0 +1,35 @@
+/* @import "https://csscomponents.netlify.app/style.css"; */
+.likedVideosParent {
+  padding: 1rem 0;
+  margin-top: 10vh;
+  min-height: 90vh;
+  background-color: #f3f4f6;
+  margin-left: 20%;
+  overflow-x: hidden;
+}
+
+.likedVideosBody {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.horizCardParent {
+  margin-bottom: 1.5rem;
+  width: 37vw !important;
+}
+
+.HorizImgDiv {
+  width: 100% !important;
+  height: 16rem !important;
+  padding-bottom: 0 !important;
+}
+
+.HorizImgDiv img {
+  object-position: cover;
+}
+
+.horizFooterBtn {
+  display: flex;
+}
