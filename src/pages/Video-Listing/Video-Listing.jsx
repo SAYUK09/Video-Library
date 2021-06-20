@@ -8,10 +8,12 @@ import { axiosAddToLikedVideos } from "../../utility/likedVideos.utility";
 import { axiosAddToWatchLater } from "../../utility/watchLater.utility";
 import { Modal } from "../../components/Modal/Modal";
 import { usePlaylist } from "../../contexts/playlistContext";
+import { useAuth } from "../../contexts/authContext";
 
 export function VideoListing() {
   const { state, dispatch } = useVideos();
   const { playlistState, playlistDispatch } = usePlaylist();
+  const { auth } = useAuth();
 
   const [showModal, setShowModal] = useState(false);
   const [newPlaylist, setNewPlaylist] = useState("");
@@ -55,7 +57,7 @@ export function VideoListing() {
                   <button
                     className="like-button"
                     onClick={() => {
-                      axiosAddToLikedVideos(vidObj, dispatch);
+                      axiosAddToLikedVideos(vidObj, dispatch, auth);
                     }}
                   >
                     <FaThumbsUp className="like-icon" />

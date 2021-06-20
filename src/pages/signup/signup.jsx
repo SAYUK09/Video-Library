@@ -14,6 +14,30 @@ export function Signup() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  console.log(name, email, password);
+
+  async function signupHandler() {
+    try {
+      const response = await axios.post(
+        "https://vid-lib-api-forked.sayuk.repl.co/register/signup",
+        {
+          name: name,
+          email: email,
+          password: password,
+        }
+      );
+
+      // if (!response.data.User) {
+      //   setError(response.data);
+      // } else {
+      //   navigate(state?.from ? state.from : "/");
+      // }
+    } catch (err) {
+      console.log(err);
+      setError("something went wrong");
+    }
+  }
+
   return (
     <div className="sigupParent">
       <div className="sigupBody">
@@ -40,7 +64,9 @@ export function Signup() {
           }}
         />
 
-        <button className="btnPrimary">Sign Up</button>
+        <button className="btnPrimary" onClick={signupHandler}>
+          Sign Up
+        </button>
 
         {error && (
           <p className="errorMessage" style={{ color: "red" }}>
