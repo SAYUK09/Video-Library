@@ -6,17 +6,20 @@ import App from "./App";
 import { VideosProvider } from "./contexts/videoLibContext";
 import { PlaylistProvider } from "./contexts/playlistContext";
 import { ToastProvider } from "./contexts/toastContext";
+import { AuthProvider } from "./contexts/authContext";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <StrictMode>
-    <ToastProvider>
-      <VideosProvider>
-        <PlaylistProvider>
-          <App />
-        </PlaylistProvider>
-      </VideosProvider>
-    </ToastProvider>
+    <AuthProvider>
+      <ToastProvider>
+        <VideosProvider>
+          <PlaylistProvider>
+            <App />
+          </PlaylistProvider>
+        </VideosProvider>
+      </ToastProvider>
+    </AuthProvider>
   </StrictMode>,
   rootElement
 );
