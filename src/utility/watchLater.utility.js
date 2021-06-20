@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function axiosAddToWatchLater(video, dispatch) {
+export function axiosAddToWatchLater(video, dispatch, auth) {
   (async function () {
     try {
       const resp = await axios.post(
@@ -12,6 +12,11 @@ export function axiosAddToWatchLater(video, dispatch) {
           description: video.description,
           category: video.category,
           channel: video.channel,
+        },
+        {
+          headers: {
+            "auth-token": auth.token,
+          },
         }
       );
 
@@ -22,11 +27,16 @@ export function axiosAddToWatchLater(video, dispatch) {
   })();
 }
 
-export function axiosRemoveFromWatchLater(video, dispatch) {
+export function axiosRemoveFromWatchLater(video, dispatch, auth) {
   (async function () {
     try {
       const response = await axios.delete(
-        `https://Vid-Lib-API-Forked.sayuk.repl.co/watchlater/${video._id}`
+        `https://Vid-Lib-API-Forked.sayuk.repl.co/watchlater/${video._id}`,
+        {
+          headers: {
+            "auth-token": auth.token,
+          },
+        }
       );
 
       dispatch({ type: "SET_WATCH_LATER", payload: response.data });

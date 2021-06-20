@@ -5,13 +5,21 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { axiosRemoveFromWatchLater } from "../../utility/watchLater.utility";
+import { useAuth } from "../../contexts/authContext";
 
 export function WatchLater() {
+  const { auth } = useAuth();
+
   useEffect(() => {
     (async function () {
       try {
         const response = await axios.get(
-          "https://Vid-Lib-API-Forked.sayuk.repl.co/watchlater"
+          "https://Vid-Lib-API-Forked.sayuk.repl.co/watchlater",
+          {
+            headers: {
+              "auth-token": auth.token,
+            },
+          }
         );
         const likedVideosArr = response.data;
         dispatch({ type: "SET_WATCH_LATER", payload: likedVideosArr });

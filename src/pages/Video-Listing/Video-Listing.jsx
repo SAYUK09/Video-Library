@@ -66,7 +66,7 @@ export function VideoListing() {
                   <button
                     className="like-button"
                     onClick={() => {
-                      axiosAddToWatchLater(vidObj, dispatch);
+                      axiosAddToWatchLater(vidObj, dispatch, auth);
                     }}
                   >
                     <FaRegClock className="like-icon" />
