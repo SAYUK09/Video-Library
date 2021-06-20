@@ -4,7 +4,7 @@ export function axiosAddToLikedVideos(video, dispatch, auth) {
   (async function () {
     try {
       const resp = await axios.post(
-        "https://vid-lib-backend.sayuk.repl.co/likedvideos",
+        "https://Vid-Lib-API-Forked.sayuk.repl.co/likedvideos",
         {
           thumbnail: video.thumbnail,
           videoURL: video.videoURL,
@@ -19,6 +19,7 @@ export function axiosAddToLikedVideos(video, dispatch, auth) {
           },
         }
       );
+      console.log(auth.token);
 
       dispatch({ type: "ADD_TO_LIKED_VIDEOS", payload: resp.data });
     } catch (err) {
@@ -31,7 +32,7 @@ export function axiosRemoveFromLikedVideos(video, dispatch, auth) {
   (async function () {
     try {
       const response = await axios.delete(
-        `https://vid-lib-backend.sayuk.repl.co/likedvideos/${video._id}`,
+        `https://Vid-Lib-API-Forked.sayuk.repl.co/likedvideos/${video._id}`,
         {
           headers: {
             "auth-token": auth.token,

@@ -13,7 +13,7 @@ export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
     (async function () {
       try {
         const response = await axios.get(
-          "https://vid-lib-backend.sayuk.repl.co/playlist"
+          "https://Vid-Lib-API-Forked.sayuk.repl.co/playlist"
         );
 
         playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });

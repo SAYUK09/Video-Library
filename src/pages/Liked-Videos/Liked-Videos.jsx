@@ -15,7 +15,7 @@ export function LikedVideos() {
     (async function () {
       try {
         const response = await axios.get(
-          "https://vid-lib-backend.sayuk.repl.co/likedvideos",
+          "https://Vid-Lib-API-Forked.sayuk.repl.co/likedvideos",
           {
             headers: {
               "auth-token": auth.token,
@@ -23,6 +23,7 @@ export function LikedVideos() {
           }
         );
         const likedVideosArr = response.data;
+        console.log(likedVideosArr);
         dispatch({ type: "SET_LIKED_VIDEOS", payload: likedVideosArr });
       } catch (err) {
         console.log("Error!!!", err);

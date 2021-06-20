@@ -4,7 +4,7 @@ export const axiosAddNewPlaylist = (newPlaylist, playlistDispatch) => {
   (async function () {
     try {
       const response = await axios.post(
-        "https://Vid-Lib-Backend.sayuk.repl.co/playlist",
+        "https://Vid-Lib-API-Forked.sayuk.repl.co/playlist",
 
         { name: newPlaylist, videos: [] }
       );
@@ -20,7 +20,7 @@ export function axiosRemovePlaylist(playlist, playlistDispatch) {
   (async function () {
     try {
       const response = await axios.delete(
-        `https://Vid-Lib-Backend.sayuk.repl.co/playlist/${playlist._id}`
+        `https://Vid-Lib-API-Forked.sayuk.repl.co/playlist/${playlist._id}`
       );
 
       playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
@@ -34,7 +34,7 @@ export function axiosAddVideoToPlaylist(playlist, video, playlistDispatch) {
   (async function () {
     try {
       const response = await axios.post(
-        `https://Vid-Lib-Backend.sayuk.repl.co/playlist/update/${playlist._id}`,
+        `https://Vid-Lib-API-Forked.sayuk.repl.co/playlist/update/${playlist._id}`,
         {
           video: video,
         }
@@ -49,7 +49,7 @@ export function axiosDeleteVideoFromPlaylist(playlist, video) {
   (async function () {
     try {
       const response = await axios.delete(
-        "https://Vid-Lib-Backend.sayuk.repl.co/playlist/delete",
+        "https://Vid-Lib-API-Forked.sayuk.repl.co/playlist/delete",
         {
           playlistId: "60aa2bc1e9b21501dd28e0f9",
           videoId: "60a36cb508c6be01521306e3",

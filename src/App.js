@@ -22,7 +22,7 @@ export default function App() {
     (async function () {
       try {
         const response = await axios.get(
-          "https://Vid-Lib-Backend.sayuk.repl.co/videos"
+          "https://Vid-Lib-API-Forked.sayuk.repl.co/videos"
         );
 
         const videos = response.data;
