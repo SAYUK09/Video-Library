@@ -8,6 +8,7 @@ import {
 } from "../../utility/playlist.utility";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
+import { toast } from "react-toastify";
 
 export function Playlist() {
   const { playlistState, playlistDispatch } = usePlaylist();
@@ -53,7 +54,12 @@ export function Playlist() {
                     </h3>
                     <button
                       onClick={() => {
-                        axiosRemovePlaylist(item, playlistDispatch, auth);
+                        axiosRemovePlaylist(
+                          item,
+                          playlistDispatch,
+                          auth,
+                          toast
+                        );
                       }}
                     >
                       X

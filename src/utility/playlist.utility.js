@@ -1,6 +1,11 @@
 import axios from "axios";
 
-export const axiosAddNewPlaylist = (newPlaylist, playlistDispatch, auth) => {
+export const axiosAddNewPlaylist = (
+  newPlaylist,
+  playlistDispatch,
+  auth,
+  toast
+) => {
   if (auth) {
     (async function () {
       console.log(newPlaylist);
@@ -22,11 +27,13 @@ export const axiosAddNewPlaylist = (newPlaylist, playlistDispatch, auth) => {
       }
     })();
   } else {
-    console.log("LOOOGIN");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 };
 
-export function axiosRemovePlaylist(playlist, playlistDispatch, auth) {
+export function axiosRemovePlaylist(playlist, playlistDispatch, auth, toast) {
   if (auth) {
     (async function () {
       try {
@@ -45,7 +52,9 @@ export function axiosRemovePlaylist(playlist, playlistDispatch, auth) {
       }
     })();
   } else {
-    console.log("LOOOGIN");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 }
 
@@ -76,7 +85,9 @@ export function axiosAddVideoToPlaylist(
       }
     })();
   } else {
-    console.log("LOOOGIN");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 }
 
@@ -101,6 +112,8 @@ export function axiosDeleteVideoFromPlaylist(playlist, video, auth) {
       }
     })();
   } else {
-    console.log("loooogin");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 }

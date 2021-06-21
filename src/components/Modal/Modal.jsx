@@ -7,6 +7,7 @@ import {
 import axios from "axios";
 import { useEffect } from "react";
 import { useAuth } from "../../contexts/authContext";
+import { toast } from "react-toastify";
 
 export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
   const { playlistState, playlistDispatch } = usePlaylist();
@@ -50,7 +51,7 @@ export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
 
           <button
             onClick={() => {
-              axiosAddNewPlaylist(newPlaylist, playlistDispatch, auth);
+              axiosAddNewPlaylist(newPlaylist, playlistDispatch, auth, toast);
             }}
           >
             Create
