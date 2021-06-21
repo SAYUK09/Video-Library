@@ -1,7 +1,12 @@
 import "./styles.css";
 import { useEffect } from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { useVideos } from "./contexts/videoLibContext";
 import { VideoListing } from "./pages/Video-Listing/Video-Listing";
 import { VideoDetail } from "./pages/Video-Details/Video-Details";
@@ -13,10 +18,12 @@ import { Sidebar } from "./components/Sidebar/Sidebar";
 import { Signup } from "./pages/signup/signup";
 import { Login } from "./pages/Login/Login";
 import { useToast } from "./contexts/toastContext";
+import { useAuth } from "./contexts/authContext";
 
 export default function App() {
   const { state, dispatch } = useVideos();
   const { ToastContainer } = useToast();
+  const { auth } = useAuth();
 
   useEffect(() => {
     (async function () {
@@ -33,6 +40,15 @@ export default function App() {
     })();
   }, []);
 
+  function PrivateRoute({ path, ...props }) {
+    console.log(path, props, "llllllll");
+    return auth ? (
+      <Route {...props} path={path} />
+    ) : (
+      <Navigate state={{ from: path }} replace to="/login" />
+    );
+  }
+
   return (
     <div className="App">
       <Router>
@@ -41,12 +57,11 @@ export default function App() {
 
         <Routes>
           <Route path="/" element={<VideoListing />} />
-          <Route path="/playlists" element={<Playlist />} />
-          <Route path="/likedvideos" element={<LikedVideos />} />
-          <Route path="/watchlater" element={<WatchLater />} />
+          <PrivateRoute path="/playlists" element={<Playlist />} />
+          <PrivateRoute path="/likedvideos" element={<LikedVideos />} />
+          <PrivateRoute path="/watchlater" element={<WatchLater />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          Pag
           <Route path="/videodetails/:id" element={<VideoDetail />} />
         </Routes>
       </Router>
