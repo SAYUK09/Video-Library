@@ -53,7 +53,7 @@ export function Playlist() {
                     </h3>
                     <button
                       onClick={() => {
-                        axiosRemovePlaylist(item, playlistDispatch);
+                        axiosRemovePlaylist(item, playlistDispatch, auth);
                       }}
                     >
                       X
