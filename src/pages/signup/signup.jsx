@@ -18,6 +18,7 @@ export function Signup() {
 
   async function signupHandler() {
     try {
+      console.log("try");
       const response = await axios.post(
         "https://vid-lib-api-forked.sayuk.repl.co/register/signup",
         {
@@ -27,14 +28,16 @@ export function Signup() {
         }
       );
 
-      // if (!response.data.User) {
-      //   setError(response.data);
-      // } else {
-      //   navigate(state?.from ? state.from : "/");
-      // }
+      console.log("30");
+
+      if (!response.data.User) {
+        setError(response.data);
+      } else {
+        navigate(state?.from ? state.from : "/");
+      }
     } catch (err) {
-      console.log(err);
-      setError("something went wrong");
+      console.log(err, "lllll");
+      setError("something went wrong", err);
     }
   }
 
