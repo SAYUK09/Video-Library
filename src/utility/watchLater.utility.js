@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function axiosAddToWatchLater(video, dispatch, auth) {
+export function axiosAddToWatchLater(video, dispatch, auth, toast) {
   if (auth) {
     (async function () {
       try {
@@ -27,11 +27,13 @@ export function axiosAddToWatchLater(video, dispatch, auth) {
       }
     })();
   } else {
-    console.log("loggin");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 }
 
-export function axiosRemoveFromWatchLater(video, dispatch, auth) {
+export function axiosRemoveFromWatchLater(video, dispatch, auth, toast) {
   if (auth) {
     (async function () {
       try {
@@ -50,6 +52,8 @@ export function axiosRemoveFromWatchLater(video, dispatch, auth) {
       }
     })();
   } else {
-    console.log("loogin");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 }

@@ -6,6 +6,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { axiosRemoveFromWatchLater } from "../../utility/watchLater.utility";
 import { useAuth } from "../../contexts/authContext";
+import { toast } from "react-toastify";
 
 export function WatchLater() {
   const { auth } = useAuth();
@@ -62,7 +63,7 @@ export function WatchLater() {
                   </button>
                   <button
                     onClick={() => {
-                      axiosRemoveFromWatchLater(vid, dispatch, auth);
+                      axiosRemoveFromWatchLater(vid, dispatch, auth, toast);
                       // dispatch({
                       //   type: "REMOVE_FROM_WATCH_LATER",
                       //   payload: vid

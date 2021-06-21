@@ -9,6 +9,7 @@ import { axiosAddToWatchLater } from "../../utility/watchLater.utility";
 import { Modal } from "../../components/Modal/Modal";
 import { usePlaylist } from "../../contexts/playlistContext";
 import { useAuth } from "../../contexts/authContext";
+import { toast } from "react-toastify";
 
 export function VideoListing() {
   const { state, dispatch } = useVideos();
@@ -66,7 +67,7 @@ export function VideoListing() {
                   <button
                     className="like-button"
                     onClick={() => {
-                      axiosAddToWatchLater(vidObj, dispatch, auth);
+                      axiosAddToWatchLater(vidObj, dispatch, auth, toast);
                     }}
                   >
                     <FaRegClock className="like-icon" />
