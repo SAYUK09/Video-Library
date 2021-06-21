@@ -62,7 +62,7 @@ export function WatchLater() {
                   </button>
                   <button
                     onClick={() => {
-                      axiosRemoveFromWatchLater(vid, dispatch);
+                      axiosRemoveFromWatchLater(vid, dispatch, auth);
                       // dispatch({
                       //   type: "REMOVE_FROM_WATCH_LATER",
                       //   payload: vid
