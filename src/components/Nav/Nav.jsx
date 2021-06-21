@@ -36,7 +36,7 @@ export function Nav() {
             <CgPlayListAdd />
           </Link>
 
-          <Link className="navRouteLink" to="/">
+          <Link className="navRouteLink" to="/watchlater">
             <BsFillClockFill />
           </Link>
 
