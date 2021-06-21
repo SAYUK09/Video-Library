@@ -14,7 +14,9 @@ export function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { auth, setAuth } = useAuth();
-  console.log(auth, "lalal");
+
+  const navigate = useNavigate();
+  const { state } = useLocation();
 
   async function loginHandler() {
     try {

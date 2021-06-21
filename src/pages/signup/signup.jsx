@@ -9,12 +9,13 @@ import {
 } from "react-router-dom";
 
 export function Signup() {
+  const navigate = useNavigate();
+  const { state } = useLocation();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  console.log(name, email, password);
 
   async function signupHandler() {
     try {
@@ -33,7 +34,7 @@ export function Signup() {
       if (!response.data.User) {
         setError(response.data);
       } else {
-        navigate(state?.from ? state.from : "/");
+        navigate("/login");
       }
     } catch (err) {
       console.log(err, "lllll");
