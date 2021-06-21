@@ -22,6 +22,9 @@ export const axiosAddNewPlaylist = (
         );
 
         playlistDispatch({ type: "CREATE_PLAYLIST", payload: response.data });
+        toast("New Playlist Created", {
+          type: "success",
+        });
       } catch (error) {
         console.log(error);
       }
@@ -47,6 +50,9 @@ export function axiosRemovePlaylist(playlist, playlistDispatch, auth, toast) {
         );
 
         playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
+        toast("Playlist Removed", {
+          type: "success",
+        });
       } catch (error) {
         console.log(error);
       }
@@ -81,6 +87,9 @@ export function axiosAddVideoToPlaylist(
         );
         console.log(video, playlist._id);
         // playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
+        toast("Video Added to Playlist", {
+          type: "success",
+        });
       } catch (err) {
         console.log(err);
       }
@@ -108,6 +117,9 @@ export function axiosDeleteVideoFromPlaylist(playlist, video, auth) {
             },
           }
         );
+        toast("Video Delete from Playlist", {
+          type: "success",
+        });
       } catch (err) {
         console.log(err);
       }

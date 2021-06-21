@@ -22,6 +22,9 @@ export function axiosAddToWatchLater(video, dispatch, auth, toast) {
         );
 
         dispatch({ type: "ADD_TO_WATCH_LATER", payload: resp.data });
+        toast("Added to Watch Later", {
+          type: "success",
+        });
       } catch (err) {
         console.log(err);
       }
@@ -47,6 +50,9 @@ export function axiosRemoveFromWatchLater(video, dispatch, auth, toast) {
         );
 
         dispatch({ type: "SET_WATCH_LATER", payload: response.data });
+        toast("Removed from Watch Later", {
+          type: "success",
+        });
       } catch (error) {
         console.log(error);
       }

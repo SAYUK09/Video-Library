@@ -20,9 +20,10 @@ export function axiosAddToLikedVideos(video, dispatch, auth, toast) {
             },
           }
         );
-        console.log(auth.token);
-
         dispatch({ type: "ADD_TO_LIKED_VIDEOS", payload: resp.data });
+        toast("Added to Liked Videos", {
+          type: "success",
+        });
       } catch (err) {
         console.log(err);
       }
@@ -48,6 +49,9 @@ export function axiosRemoveFromLikedVideos(video, dispatch, auth, toast) {
         );
 
         dispatch({ type: "SET_LIKED_VIDEOS", payload: response.data });
+        toast("Removed from Liked Videos", {
+          type: "success",
+        });
       } catch (error) {
         console.log(error);
       }
