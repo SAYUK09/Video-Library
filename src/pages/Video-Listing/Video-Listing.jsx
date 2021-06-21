@@ -58,7 +58,7 @@ export function VideoListing() {
                   <button
                     className="like-button"
                     onClick={() => {
-                      axiosAddToLikedVideos(vidObj, dispatch, auth);
+                      axiosAddToLikedVideos(vidObj, dispatch, auth, toast);
                     }}
                   >
                     <FaThumbsUp className="like-icon" />

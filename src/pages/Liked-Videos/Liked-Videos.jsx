@@ -6,6 +6,7 @@ import { useVideos } from "../../contexts/videoLibContext";
 import { FaThumbsDown, FaRegClock, FaBorderNone } from "react-icons/fa";
 import { axiosRemoveFromLikedVideos } from "../../utility/likedVideos.utility";
 import { useAuth } from "../../contexts/authContext";
+import { toast } from "react-toastify";
 
 export function LikedVideos() {
   const { state, dispatch } = useVideos();
@@ -62,7 +63,7 @@ export function LikedVideos() {
                   </button>
                   <button
                     onClick={() => {
-                      axiosRemoveFromLikedVideos(vid, dispatch, auth);
+                      axiosRemoveFromLikedVideos(vid, dispatch, auth, toast);
                       // dispatch({
                       //   type: "REMOVE_FROM_LIKED_VIDEOS",
                       //   payload: vid

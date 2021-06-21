@@ -70,7 +70,8 @@ export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
                         item,
                         video,
                         playlistDispatch,
-                        auth
+                        auth,
+                        toast
                       );
                     }}
                   >

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function axiosAddToLikedVideos(video, dispatch, auth) {
+export function axiosAddToLikedVideos(video, dispatch, auth, toast) {
   if (auth) {
     (async function () {
       try {
@@ -28,11 +28,13 @@ export function axiosAddToLikedVideos(video, dispatch, auth) {
       }
     })();
   } else {
-    console.log("loginn");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 }
 
-export function axiosRemoveFromLikedVideos(video, dispatch, auth) {
+export function axiosRemoveFromLikedVideos(video, dispatch, auth, toast) {
   if (auth) {
     (async function () {
       try {
@@ -51,6 +53,8 @@ export function axiosRemoveFromLikedVideos(video, dispatch, auth) {
       }
     })();
   } else {
-    console.log("lalal");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 }

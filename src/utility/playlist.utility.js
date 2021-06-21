@@ -62,7 +62,8 @@ export function axiosAddVideoToPlaylist(
   playlist,
   video,
   playlistDispatch,
-  auth
+  auth,
+  toast
 ) {
   if (auth) {
     (async function () {
