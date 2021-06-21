@@ -6,9 +6,12 @@ import {
 } from "../../utility/playlist.utility";
 import axios from "axios";
 import { useEffect } from "react";
+import { useAuth } from "../../contexts/authContext";
 
 export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
   const { playlistState, playlistDispatch } = usePlaylist();
+  const { auth } = useAuth();
+
   useEffect(() => {
     (async function () {
       try {
@@ -47,7 +50,7 @@ export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
 
           <button
             onClick={() => {
-              axiosAddNewPlaylist(newPlaylist, playlistDispatch);
+              axiosAddNewPlaylist(newPlaylist, playlistDispatch, auth);
             }}
           >
             Create
@@ -62,7 +65,12 @@ export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
                   <p>{item.name}</p>
                   <button
                     onClick={() => {
-                      axiosAddVideoToPlaylist(item, video, playlistDispatch);
+                      axiosAddVideoToPlaylist(
+                        item,
+                        video,
+                        playlistDispatch,
+                        auth
+                      );
                     }}
                   >
                     Add

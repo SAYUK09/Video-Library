@@ -7,19 +7,27 @@ import {
   axiosRemovePlaylist,
 } from "../../utility/playlist.utility";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext";
 
 export function Playlist() {
   const { playlistState, playlistDispatch } = usePlaylist();
   const [playlistVideos, setPlaylistVideos] = useState();
+  const { auth } = useAuth();
 
   useEffect(() => {
     (async function () {
       try {
         const response = await axios.get(
-          "https://Vid-Lib-API-Forked.sayuk.repl.co/playlist"
+          "https://Vid-Lib-API-Forked.sayuk.repl.co/playlist",
+          {
+            headers: {
+              "auth-token": auth.token,
+            },
+          }
         );
 
         playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -34,6 +42,7 @@ export function Playlist() {
             {playlistState.playlist.map((item) => {
               return (
                 <>
+                  {console.log(item.name, "trala")}
                   <div className="playlistLister">
                     <h3
                       onClick={() => {
