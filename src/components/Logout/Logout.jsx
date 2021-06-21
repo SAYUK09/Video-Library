@@ -1,6 +1,7 @@
 import "./Logout.css";
 import React from "react";
 import { useAuth } from "../../contexts/authContext";
+import { toast } from "react-toastify";
 
 export const Logout = () => {
   const { auth, setAuth } = useAuth();
@@ -8,6 +9,9 @@ export const Logout = () => {
   function logoutHandler() {
     setAuth(() => {
       localStorage.removeItem("auth");
+    });
+    toast("Logged out Successfully", {
+      type: "success",
     });
   }
 
