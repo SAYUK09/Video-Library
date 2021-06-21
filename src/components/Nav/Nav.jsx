@@ -8,7 +8,7 @@ import {
 import {
   BsFillClockFill,
   BsList,
-  BsMusicNoteList,
+  BsFillPersonFill,
   BsPlayFill,
 } from "react-icons/bs";
 import { AiFillLike } from "react-icons/ai";
@@ -38,6 +38,10 @@ export function Nav() {
 
           <Link className="navRouteLink" to="/">
             <BsFillClockFill />
+          </Link>
+
+          <Link className="navRouteLink" to="/login">
+            <BsFillPersonFill />
           </Link>
         </div>
       </nav>

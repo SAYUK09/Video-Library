@@ -7,7 +7,7 @@ export const PlaylistContext = createContext();
 
 export function PlaylistProvider({ children }) {
   const [playlistState, playlistDispatch] = useReducer(playlistReducer, {
-    playlist: [{ id: uuid(), name: "Playlist1", videos: [] }]
+    playlist: [],
   });
 
   return (
