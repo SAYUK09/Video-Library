@@ -1,22 +1,13 @@
 import "./Nav.css";
-import {
-  CgPlayListAdd,
-  CgPlayButton,
-  CgHeart,
-  CgMediaPodcast,
-} from "react-icons/cg";
-import {
-  BsFillClockFill,
-  BsList,
-  BsFillPersonFill,
-  BsPlayFill,
-} from "react-icons/bs";
-import { AiFillLike } from "react-icons/ai";
-
 import React from "react";
+import { CgPlayListAdd } from "react-icons/cg";
+import { BsFillClockFill, BsFillPersonFill, BsPlayFill } from "react-icons/bs";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext";
 
 export function Nav() {
+  const { auth } = useAuth();
+
   return (
     <div>
       <nav className="nav1">
@@ -41,7 +32,12 @@ export function Nav() {
           </Link>
 
           <Link className="navRouteLink" to="/login">
-            <BsFillPersonFill />
+            <div className="userDiv">
+              <BsFillPersonFill />
+              <div className="userDetails">
+                {auth ? <p>{auth.user.name}</p> : <p>Login</p>}
+              </div>
+            </div>
           </Link>
         </div>
       </nav>

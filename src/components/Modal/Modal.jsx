@@ -17,7 +17,12 @@ export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
     (async function () {
       try {
         const response = await axios.get(
-          "https://Vid-Lib-API-Forked.sayuk.repl.co/playlist"
+          "https://Vid-Lib-API-Forked.sayuk.repl.co/playlist",
+          {
+            headers: {
+              "auth-token": auth.token,
+            },
+          }
         );
 
         playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
@@ -62,7 +67,7 @@ export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
           {playlistState.playlist.map((item) => {
             return (
               <>
-                <div className="playlistTitle">
+                <div key={item._id} className="playlistTitle">
                   <p>{item.name}</p>
                   <button
                     onClick={() => {
