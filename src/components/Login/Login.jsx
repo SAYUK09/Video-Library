@@ -32,14 +32,10 @@ export const LoginComponent = () => {
         }
       );
 
-      console.log(response.data);
-
       if (!response.data.token) {
         setError(response.data);
         setDisplayLoader(false);
       } else {
-        console.log("khatna");
-
         setAuth(response.data);
         setAuth((prev) => {
           localStorage.setItem("auth", JSON.stringify(prev));

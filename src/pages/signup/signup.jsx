@@ -23,7 +23,7 @@ export function Signup() {
   async function signupHandler() {
     try {
       setDisplayLoader(true);
-      console.log("try");
+
       const response = await axios.post(
         "https://vid-lib-api-forked.sayuk.repl.co/register/signup",
         {
@@ -32,8 +32,6 @@ export function Signup() {
           password: password,
         }
       );
-
-      console.log("30");
 
       if (!response.data.User) {
         setError(response.data);
@@ -46,7 +44,6 @@ export function Signup() {
         });
       }
     } catch (err) {
-      console.log(err, "lllll");
       setError("something went wrong", err);
     }
   }

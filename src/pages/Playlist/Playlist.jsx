@@ -28,7 +28,6 @@ export function Playlist() {
         );
 
         playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
-        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -43,7 +42,6 @@ export function Playlist() {
             {playlistState.playlist.map((item) => {
               return (
                 <>
-                  {console.log(item.name, "trala")}
                   <div className="playlistLister">
                     <h3
                       onClick={() => {

@@ -8,7 +8,6 @@ export const axiosAddNewPlaylist = (
 ) => {
   if (auth) {
     (async function () {
-      console.log(newPlaylist);
       try {
         const response = await axios.post(
           "https://Vid-Lib-API-Forked.sayuk.repl.co/playlist",
@@ -85,7 +84,7 @@ export function axiosAddVideoToPlaylist(
             },
           }
         );
-        console.log(video, playlist._id);
+
         // playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
         toast("Video Added to Playlist", {
           type: "success",
