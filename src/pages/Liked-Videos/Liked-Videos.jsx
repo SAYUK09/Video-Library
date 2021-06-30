@@ -24,7 +24,7 @@ export function LikedVideos() {
           }
         );
         const likedVideosArr = response.data;
-        console.log(likedVideosArr);
+        console.log(likedVideosArr, "likes");
         dispatch({ type: "SET_LIKED_VIDEOS", payload: likedVideosArr });
       } catch (err) {
         console.log("Error!!!", err);

@@ -41,7 +41,6 @@ export default function App() {
   }, []);
 
   function PrivateRoute({ path, ...props }) {
-    console.log(path, props, "llllllll");
     return auth ? (
       <Route {...props} path={path} />
     ) : (

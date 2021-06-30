@@ -1,11 +1,12 @@
 import axios from "axios";
+export const baseURl = "https://Vid-Lib-API-Forked.sayuk.repl.co";
 
 export function axiosAddToLikedVideos(video, dispatch, auth, toast) {
   if (auth) {
     (async function () {
       try {
         const resp = await axios.post(
-          "https://Vid-Lib-API-Forked.sayuk.repl.co/likedvideos",
+          `${baseURl}/likedvideos`,
           {
             thumbnail: video.thumbnail,
             videoURL: video.videoURL,

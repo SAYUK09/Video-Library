@@ -33,60 +33,66 @@ export function VideoListing() {
               setShowModal={setShowModal}
             />
           )}
-          {state.videos.map((vidObj) => {
-            return (
-              <div key={vidObj._id} className="vidCardBody">
-                <Link
-                  className="videoDetailRoute"
-                  to={`/videodetails/${vidObj.videoURL}`}
-                >
-                  <div className="videoImgDiv">
-                    <img className="thumbnail-image" src={vidObj.thumbnail} />
+          {state.videos &&
+            state.videos.map((vidObj) => {
+              return (
+                <div key={vidObj._id} className="vidCardBody">
+                  <Link
+                    className="videoDetailRoute"
+                    to={`/videodetails/${vidObj.videoURL}`}
+                  >
+                    <div className="videoImgDiv">
+                      <img className="thumbnail-image" src={vidObj.thumbnail} />
+                    </div>
+                  </Link>
+                  <Link
+                    className="videoDetailRoute"
+                    to={`/videodetails/${vidObj.videoURL}`}
+                  >
+                    <h4 className="video-title"> {vidObj.title}</h4>
+                  </Link>
+                  <b>
+                    <small>{vidObj.channel}</small>
+                  </b>
+                  <small className="vid-category">{vidObj.category}</small>
+
+                  <div className="vidBtnDiv">
+                    <button
+                      className="like-button"
+                      onClick={() => {
+                        axiosAddToLikedVideos(vidObj, dispatch, auth, toast);
+                      }}
+                    >
+                      <FaThumbsUp className="like-icon" />
+                    </button>
+
+                    <button
+                      className="like-button"
+                      onClick={() => {
+                        axiosAddToWatchLater(vidObj, dispatch, auth, toast);
+                      }}
+                    >
+                      <FaRegClock className="like-icon" />
+                    </button>
+
+                    <button
+                      className="like-button"
+                      onClick={() => {
+                        setShowModal(!showModal);
+                        setVideoToAdd(vidObj);
+                      }}
+                    >
+                      <CgPlayListAdd className="like-icon" />
+                    </button>
                   </div>
-                </Link>
-                <Link
-                  className="videoDetailRoute"
-                  to={`/videodetails/${vidObj.videoURL}`}
-                >
-                  <h4 className="video-title"> {vidObj.title}</h4>
-                </Link>
-                <b>
-                  <small>{vidObj.channel}</small>
-                </b>
-                <small className="vid-category">{vidObj.category}</small>
-
-                <div className="vidBtnDiv">
-                  <button
-                    className="like-button"
-                    onClick={() => {
-                      axiosAddToLikedVideos(vidObj, dispatch, auth, toast);
-                    }}
-                  >
-                    <FaThumbsUp className="like-icon" />
-                  </button>
-
-                  <button
-                    className="like-button"
-                    onClick={() => {
-                      axiosAddToWatchLater(vidObj, dispatch, auth, toast);
-                    }}
-                  >
-                    <FaRegClock className="like-icon" />
-                  </button>
-
-                  <button
-                    className="like-button"
-                    onClick={() => {
-                      setShowModal(!showModal);
-                      setVideoToAdd(vidObj);
-                    }}
-                  >
-                    <CgPlayListAdd className="like-icon" />
-                  </button>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          {state.videos.lenght ? (
+            ""
+          ) : (
+            <Loader type="TailSpin" color="#3b82f6" height={80} width={80} />
+          )}
         </div>
       </div>
     </>
