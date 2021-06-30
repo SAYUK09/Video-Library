@@ -1,7 +1,7 @@
 import "./Nav.css";
 import React from "react";
 import { CgPlayListAdd } from "react-icons/cg";
-import { BsFillClockFill, BsFillPersonFill, BsPlayFill } from "react-icons/bs";
+import { BsFillPersonFill, BsPlayFill, BsClockFill } from "react-icons/bs";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 
@@ -19,19 +19,19 @@ export function Nav() {
         </div>
         <input className="navSearchBar" placeholder="🔎Search something" />
         <div className="navIcons">
-          <Link className="navRouteLink" to="/">
+          <Link className="navRouteLink navIcon" to="/">
             <BsPlayFill />
           </Link>
 
-          <Link className="navRouteLink" to="/playlists">
+          <Link className="navRouteLink navIcon" to="/playlists">
             <CgPlayListAdd />
           </Link>
 
-          <Link className="navRouteLink" to="/watchlater">
-            <BsFillClockFill />
+          <Link className="navRouteLink " to="/watchlater">
+            <BsClockFill />
           </Link>
 
-          <Link className="navRouteLink" to="/login">
+          <Link className="navRouteLink navIconWL " to="/login">
             <div className="userDiv">
               <BsFillPersonFill />
               <div className="userDetails">

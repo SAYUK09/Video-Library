@@ -17,6 +17,14 @@
   position: relative;
 }
 
+.navRouteLink.navIcon {
+  font-size: 1.3rem;
+}
+
+.navIconWL {
+  font-size: 1.1rem;
+}
+
 .navSearchBar {
   padding: 0.5rem;
 }
