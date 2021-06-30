@@ -61,6 +61,7 @@ export const LoginComponent = () => {
       <div className="loginBody">
         <h1>Login</h1>
         <input
+          type="email"
           className="inputBox"
           placeholder="Email"
           onChange={(e) => {
@@ -68,6 +69,7 @@ export const LoginComponent = () => {
           }}
         />
         <input
+          type="password"
           className="inputBox"
           placeholder="Password"
           onChange={(e) => {
@@ -82,7 +84,7 @@ export const LoginComponent = () => {
           width={60}
         />
 
-        <button className="btnPrimary" onClick={loginHandler}>
+        <button type="submit" className="btnPrimary" onClick={loginHandler}>
           Login
         </button>
         {error && (

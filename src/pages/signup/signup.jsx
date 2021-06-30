@@ -56,6 +56,7 @@ export function Signup() {
       <div className="sigupBody">
         <h1>signup</h1>
         <input
+          type="text"
           className="inputBox"
           placeholder="Name"
           onChange={(e) => {
@@ -63,6 +64,7 @@ export function Signup() {
           }}
         />
         <input
+          type="email"
           placeholder="Email"
           className="inputBox"
           onChange={(e) => {
@@ -70,6 +72,7 @@ export function Signup() {
           }}
         />
         <input
+          type="password"
           className="inputBox"
           placeholder="Password"
           onChange={(e) => {
@@ -85,7 +88,7 @@ export function Signup() {
           width={60}
         />
 
-        <button className="btnPrimary" onClick={signupHandler}>
+        <button type="submit" className="btnPrimary" onClick={signupHandler}>
           Sign Up
         </button>
 
