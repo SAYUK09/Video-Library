@@ -14,9 +14,8 @@ import Loader from "react-loader-spinner";
 
 export function VideoListing() {
   const { state, dispatch } = useVideos();
-  const { playlistState, playlistDispatch } = usePlaylist();
   const { auth } = useAuth();
-
+  const [displayLoader, setDisplayLoader] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [newPlaylist, setNewPlaylist] = useState("");
   const [videoToAdd, setVideoToAdd] = useState({});
@@ -88,9 +87,8 @@ export function VideoListing() {
                 </div>
               );
             })}
-          {state.videos.lenght ? (
-            ""
-          ) : (
+
+          {!state.videos.length && (
             <Loader type="TailSpin" color="#3b82f6" height={80} width={80} />
           )}
         </div>
