@@ -13,6 +13,7 @@ export function axiosAddToWatchLater(video, dispatch, auth, toast) {
             description: video.description,
             category: video.category,
             channel: video.channel,
+            videoId: video._id,
           },
           {
             headers: {

@@ -68,7 +68,23 @@ export function VideoListing() {
                     <button
                       className="like-button"
                       onClick={() => {
-                        axiosAddToWatchLater(vidObj, dispatch, auth, toast);
+                        const isInWatchLater = state.watchLater.filter(
+                          (item) => {
+                            return vidObj._id == item.videoId;
+                          }
+                        );
+                        if (state.likedVideos.length === 0) {
+                          console.log(isInWatchLater.length);
+                          axiosAddToWatchLater(vidObj, dispatch, auth, toast);
+                        } else {
+                          if (isInWatchLater.length === 1) {
+                            toast("Already Added", {
+                              type: "warning",
+                            });
+                          } else {
+                            axiosAddToWatchLater(vidObj, dispatch, auth, toast);
+                          }
+                        }
                       }}
                     >
                       <FaRegClock className="like-icon" />
