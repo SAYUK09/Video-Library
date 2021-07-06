@@ -9,6 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 import { toast } from "react-toastify";
+import emptySvg from "../../assests/empty.svg";
 
 export function Playlist() {
   const { playlistState, playlistDispatch } = usePlaylist();
@@ -38,6 +39,15 @@ export function Playlist() {
     <>
       <div className="plalistParent">
         <div className="playlistBody">
+          {!playlistState.playlist.length && (
+            <div className="emptySvgDiv">
+              <img src={emptySvg} />
+              <h2>No Saved Playlists</h2>
+              <Link className="emptySvgLink" to="/">
+                Watch Videos 📺
+              </Link>
+            </div>
+          )}
           <div className="playlistCard">
             {playlistState.playlist.map((item) => {
               return (

@@ -7,6 +7,7 @@ import { FaThumbsDown, FaRegClock, FaBorderNone } from "react-icons/fa";
 import { axiosRemoveFromLikedVideos } from "../../utility/likedVideos.utility";
 import { useAuth } from "../../contexts/authContext";
 import { toast } from "react-toastify";
+import emptySvg from "../../assests/empty.svg";
 
 export function LikedVideos() {
   const { state, dispatch } = useVideos();
@@ -25,7 +26,7 @@ export function LikedVideos() {
         );
         const likedVideosArr = response.data;
         console.log(likedVideosArr, "likes");
-        dispatch({ type: "SET_LIKED_VIDEOS", payload: likedVideosArr });
+        // dispatch({ type: "SET_LIKED_VIDEOS", payload: likedVideosArr });
       } catch (err) {
         console.log("Error!!!", err);
       }
@@ -36,6 +37,16 @@ export function LikedVideos() {
     <>
       <div className="likedVideosParent">
         <div className="likedVideosBody">
+          {!state.likedVideos.length && (
+            <div className="emptySvgDiv">
+              <img src={emptySvg} />
+              <h2>Nothing in Liked Videos</h2>
+              <Link className="emptySvgLink" to="/">
+                Watch Videos 📺
+              </Link>
+            </div>
+          )}
+
           {state.likedVideos.map((vid) => {
             return (
               <div key={vid._id} className="horizCardParent">

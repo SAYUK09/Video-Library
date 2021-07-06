@@ -7,9 +7,11 @@ import { Link } from "react-router-dom";
 import { axiosRemoveFromWatchLater } from "../../utility/watchLater.utility";
 import { useAuth } from "../../contexts/authContext";
 import { toast } from "react-toastify";
+import emptySvg from "../../assests/empty.svg";
 
 export function WatchLater() {
   const { auth } = useAuth();
+  const { state, dispatch } = useVideos();
 
   useEffect(() => {
     (async function () {
@@ -23,19 +25,27 @@ export function WatchLater() {
           }
         );
         const likedVideosArr = response.data;
-        dispatch({ type: "SET_WATCH_LATER", payload: likedVideosArr });
+        console.log(likedVideosArr);
+        // dispatch({ type: "SET_WATCH_LATER", payload: likedVideosArr });
       } catch (err) {
         console.log("Error!!!", err);
       }
     })();
   }, []);
 
-  const { state, dispatch } = useVideos();
-
   return (
     <>
       <div className="watchLaterParent">
         <div className="watchLaterBody">
+          {!state.likedVideos.length && (
+            <div className="emptySvgDiv">
+              <img src={emptySvg} />
+              <h2>Nothing Saved in Watch Later</h2>
+              <Link className="emptySvgLink" to="/">
+                Watch Videos 📺
+              </Link>
+            </div>
+          )}
           {state.watchLater.map((vid) => {
             return (
               <div key={vid._id} className="horizCardParent">
