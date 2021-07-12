@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import { VideosProvider } from "./contexts/videoLibContext";
 import { PlaylistProvider } from "./contexts/playlistContext";
@@ -11,15 +12,17 @@ import { AuthProvider } from "./contexts/authContext";
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <StrictMode>
-    <AuthProvider>
-      <ToastProvider>
-        <VideosProvider>
-          <PlaylistProvider>
-            <App />
-          </PlaylistProvider>
-        </VideosProvider>
-      </ToastProvider>
-    </AuthProvider>
+    <Router>
+      <AuthProvider>
+        <ToastProvider>
+          <VideosProvider>
+            <PlaylistProvider>
+              <App />
+            </PlaylistProvider>
+          </VideosProvider>
+        </ToastProvider>
+      </AuthProvider>
+    </Router>
   </StrictMode>,
   rootElement
 );

@@ -13,6 +13,7 @@ export function LikedVideos() {
   const { state, dispatch } = useVideos();
   const { auth } = useAuth();
 
+  console.log(auth);
   useEffect(() => {
     (async function () {
       try {
@@ -25,8 +26,8 @@ export function LikedVideos() {
           }
         );
         const likedVideosArr = response.data;
-        console.log(likedVideosArr, "likes");
-        // dispatch({ type: "SET_LIKED_VIDEOS", payload: likedVideosArr });
+
+        dispatch({ type: "SET_LIKED_VIDEOS", payload: likedVideosArr });
       } catch (err) {
         console.log("Error!!!", err);
       }
