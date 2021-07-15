@@ -37,7 +37,7 @@ export function WatchLater() {
     <>
       <div className="watchLaterParent">
         <div className="watchLaterBody">
-          {!state.likedVideos.length && (
+          {!state.watchLater.length && (
             <div className="emptySvgDiv">
               <img src={emptySvg} />
               <h2>Nothing Saved in Watch Later</h2>

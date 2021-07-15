@@ -1,5 +1,23 @@
 import axios from "axios";
 
+export function ifAlreadyInWatchLater(state, vidObj, dispatch, auth, toast) {
+  const isInWatchLater = state.watchLater.filter((item) => {
+    return vidObj._id == item.videoId;
+  });
+  if (state.watchLater.length === 0) {
+    console.log(isInWatchLater.length);
+    axiosAddToWatchLater(vidObj, dispatch, auth, toast);
+  } else {
+    if (isInWatchLater.length === 1) {
+      toast("Already Added", {
+        type: "warning",
+      });
+    } else {
+      axiosAddToWatchLater(vidObj, dispatch, auth, toast);
+    }
+  }
+}
+
 export function axiosAddToWatchLater(video, dispatch, auth, toast) {
   if (auth) {
     (async function () {

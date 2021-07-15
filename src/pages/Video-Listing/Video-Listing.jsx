@@ -5,7 +5,10 @@ import { useVideos } from "../../contexts/videoLibContext";
 import { FaThumbsUp, FaRegClock, FaBorderNone } from "react-icons/fa";
 import { CgPlayListAdd } from "react-icons/cg";
 import { ifAlreadyInLikedVideos } from "../../utility/likedVideos.utility";
-import { axiosAddToWatchLater } from "../../utility/watchLater.utility";
+import {
+  axiosAddToWatchLater,
+  ifAlreadyInWatchLater,
+} from "../../utility/watchLater.utility";
 import { Modal } from "../../components/Modal/Modal";
 import { usePlaylist } from "../../contexts/playlistContext";
 import { useAuth } from "../../contexts/authContext";
@@ -74,23 +77,13 @@ export function VideoListing() {
                     <button
                       className="like-button"
                       onClick={() => {
-                        const isInWatchLater = state.watchLater.filter(
-                          (item) => {
-                            return vidObj._id == item.videoId;
-                          }
+                        ifAlreadyInWatchLater(
+                          state,
+                          vidObj,
+                          dispatch,
+                          auth,
+                          toast
                         );
-                        if (state.likedVideos.length === 0) {
-                          console.log(isInWatchLater.length);
-                          axiosAddToWatchLater(vidObj, dispatch, auth, toast);
-                        } else {
-                          if (isInWatchLater.length === 1) {
-                            toast("Already Added", {
-                              type: "warning",
-                            });
-                          } else {
-                            axiosAddToWatchLater(vidObj, dispatch, auth, toast);
-                          }
-                        }
                       }}
                     >
                       <FaRegClock className="like-icon" />
