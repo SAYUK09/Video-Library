@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useVideos } from "../../contexts/videoLibContext";
 import { FaThumbsUp, FaRegClock, FaBorderNone } from "react-icons/fa";
 import { CgPlayListAdd } from "react-icons/cg";
-import { axiosAddToLikedVideos } from "../../utility/likedVideos.utility";
+import { ifAlreadyInLikedVideos } from "../../utility/likedVideos.utility";
 import { axiosAddToWatchLater } from "../../utility/watchLater.utility";
 import { Modal } from "../../components/Modal/Modal";
 import { usePlaylist } from "../../contexts/playlistContext";
@@ -59,7 +59,13 @@ export function VideoListing() {
                     <button
                       className="like-button"
                       onClick={() => {
-                        axiosAddToLikedVideos(vidObj, dispatch, auth, toast);
+                        ifAlreadyInLikedVideos(
+                          state,
+                          vidObj,
+                          dispatch,
+                          auth,
+                          toast
+                        );
                       }}
                     >
                       <FaThumbsUp className="like-icon" />
