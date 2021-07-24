@@ -7,16 +7,25 @@ import {
   axiosRemovePlaylist,
 } from "../../utility/playlist.utility";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext";
+import { toast } from "react-toastify";
+import emptySvg from "../../assests/empty.svg";
 
 export function Playlist() {
   const { playlistState, playlistDispatch } = usePlaylist();
   const [playlistVideos, setPlaylistVideos] = useState();
+  const { auth } = useAuth();
 
   useEffect(() => {
     (async function () {
       try {
         const response = await axios.get(
-          "https://vid-lib-backend.sayuk.repl.co/playlist"
+          "https://Vid-Lib-API-Forked.sayuk.repl.co/playlist",
+          {
+            headers: {
+              "auth-token": auth.token,
+            },
+          }
         );
 
         playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
@@ -30,6 +39,15 @@ export function Playlist() {
     <>
       <div className="plalistParent">
         <div className="playlistBody">
+          {!playlistState.playlist.length && (
+            <div className="emptySvgDiv">
+              <img src={emptySvg} />
+              <h2>No Saved Playlists</h2>
+              <Link className="emptySvgLink" to="/">
+                Watch Videos 📺
+              </Link>
+            </div>
+          )}
           <div className="playlistCard">
             {playlistState.playlist.map((item) => {
               return (
@@ -44,7 +62,12 @@ export function Playlist() {
                     </h3>
                     <button
                       onClick={() => {
-                        axiosRemovePlaylist(item, playlistDispatch);
+                        axiosRemovePlaylist(
+                          item,
+                          playlistDispatch,
+                          auth,
+                          toast
+                        );
                       }}
                     >
                       X
