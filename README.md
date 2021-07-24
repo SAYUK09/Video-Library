@@ -1,3 +1,3 @@
 # Video-Library
 
-A videp Library App
+Collection of currated podcasts for tech, startup and finance enthusiasts!
