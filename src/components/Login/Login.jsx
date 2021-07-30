@@ -1,4 +1,4 @@
-import "./signup.css";
+import "./Login.css";
 import axios from "axios";
 import React, { useState } from "react";
 import {
@@ -7,63 +7,59 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext";
 import { toast } from "react-toastify";
 import Loader from "react-loader-spinner";
 
-export function Signup() {
+export const LoginComponent = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [displayLoader, setDisplayLoader] = useState(false);
+  const { auth, setAuth } = useAuth();
+
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [displayLoader, setDisplayLoader] = useState(false);
-  const [error, setError] = useState("");
-
-  async function signupHandler() {
+  async function loginHandler() {
     try {
       setDisplayLoader(true);
-
       const response = await axios.post(
-        "https://vid-lib-api-forked.sayuk.repl.co/register/signup",
+        "https://vid-lib-api-forked.sayuk.repl.co/register/login",
         {
-          name: name,
           email: email,
           password: password,
         }
       );
 
-      if (!response.data.User) {
+      if (!response.data.token) {
         setError(response.data);
         setDisplayLoader(false);
       } else {
-        navigate("/login");
-        setDisplayLoader(true);
-        toast("Please Login", {
+        setAuth(response.data);
+        setAuth((prev) => {
+          localStorage.setItem("auth", JSON.stringify(prev));
+          return prev;
+        });
+        toast("Logged in Successfully", {
           type: "success",
         });
+        navigate(state?.from ? state.from : "/");
+        setDisplayLoader(false);
       }
     } catch (err) {
-      setError("something went wrong", err);
+      console.log(err);
     }
   }
 
   return (
-    <div className="sigupParent">
-      <div className="sigupBody">
-        <h1>signup</h1>
-        <input
-          type="text"
-          className="inputBox"
-          placeholder="Name"
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
+    <div className="loginParent">
+      <div className="loginBody">
+        <h1>Login</h1>
         <input
           type="email"
-          placeholder="Email"
           className="inputBox"
+          placeholder="Email"
           onChange={(e) => {
             setEmail(e.target.value);
           }}
@@ -76,7 +72,6 @@ export function Signup() {
             setPassword(e.target.value);
           }}
         />
-
         <Loader
           visible={displayLoader}
           type="TailSpin"
@@ -85,20 +80,18 @@ export function Signup() {
           width={60}
         />
 
-        <button type="submit" className="btnPrimary" onClick={signupHandler}>
-          Sign Up
+        <button type="submit" className="btnPrimary" onClick={loginHandler}>
+          Login
         </button>
-
         {error && (
           <p className="errorMessage" style={{ color: "red" }}>
             {error}
           </p>
         )}
-
         <p>
-          Already have an account, <Link to="/login">Login</Link>
+          Don't have an accout, <Link to="/signup">Create Account</Link>
         </p>
       </div>
     </div>
   );
-}
+};

@@ -6,14 +6,23 @@ import {
 } from "../../utility/playlist.utility";
 import axios from "axios";
 import { useEffect } from "react";
+import { useAuth } from "../../contexts/authContext";
+import { toast } from "react-toastify";
 
 export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
   const { playlistState, playlistDispatch } = usePlaylist();
+  const { auth } = useAuth();
+
   useEffect(() => {
     (async function () {
       try {
         const response = await axios.get(
-          "https://vid-lib-backend.sayuk.repl.co/playlist"
+          "https://Vid-Lib-API-Forked.sayuk.repl.co/playlist",
+          {
+            headers: {
+              "auth-token": auth.token,
+            },
+          }
         );
 
         playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
@@ -47,7 +56,7 @@ export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
 
           <button
             onClick={() => {
-              axiosAddNewPlaylist(newPlaylist, playlistDispatch);
+              axiosAddNewPlaylist(newPlaylist, playlistDispatch, auth, toast);
             }}
           >
             Create
@@ -58,11 +67,17 @@ export function Modal({ newPlaylist, setNewPlaylist, video, setShowModal }) {
           {playlistState.playlist.map((item) => {
             return (
               <>
-                <div className="playlistTitle">
+                <div key={item._id} className="playlistTitle">
                   <p>{item.name}</p>
                   <button
                     onClick={() => {
-                      axiosAddVideoToPlaylist(item, video, playlistDispatch);
+                      axiosAddVideoToPlaylist(
+                        item,
+                        video,
+                        playlistDispatch,
+                        auth,
+                        toast
+                      );
                     }}
                   >
                     Add

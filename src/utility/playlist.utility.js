@@ -1,62 +1,131 @@
 import axios from "axios";
 
-export const axiosAddNewPlaylist = (newPlaylist, playlistDispatch) => {
-  (async function () {
-    try {
-      const response = await axios.post(
-        "https://Vid-Lib-Backend.sayuk.repl.co/playlist",
+export const axiosAddNewPlaylist = (
+  newPlaylist,
+  playlistDispatch,
+  auth,
+  toast
+) => {
+  if (auth) {
+    (async function () {
+      try {
+        const response = await axios.post(
+          "https://Vid-Lib-API-Forked.sayuk.repl.co/playlist",
 
-        { name: newPlaylist, videos: [] }
-      );
+          { name: newPlaylist, videos: [] },
+          {
+            headers: {
+              "auth-token": auth.token,
+            },
+          }
+        );
 
-      playlistDispatch({ type: "CREATE_PLAYLIST", payload: response.data });
-    } catch (error) {
-      console.log(error);
-    }
-  })();
+        playlistDispatch({ type: "CREATE_PLAYLIST", payload: response.data });
+        toast("New Playlist Created", {
+          type: "success",
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  } else {
+    toast("Please Login", {
+      type: "error",
+    });
+  }
 };
 
-export function axiosRemovePlaylist(playlist, playlistDispatch) {
-  (async function () {
-    try {
-      const response = await axios.delete(
-        `https://Vid-Lib-Backend.sayuk.repl.co/playlist/${playlist._id}`
-      );
+export function axiosRemovePlaylist(playlist, playlistDispatch, auth, toast) {
+  if (auth) {
+    (async function () {
+      try {
+        const response = await axios.delete(
+          `https://Vid-Lib-API-Forked.sayuk.repl.co/playlist/${playlist._id}`,
+          {
+            headers: {
+              "auth-token": auth.token,
+            },
+          }
+        );
 
-      playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
-    } catch (error) {
-      console.log(error);
-    }
-  })();
+        playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
+        toast("Playlist Removed", {
+          type: "success",
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  } else {
+    toast("Please Login", {
+      type: "error",
+    });
+  }
 }
 
-export function axiosAddVideoToPlaylist(playlist, video, playlistDispatch) {
-  (async function () {
-    try {
-      const response = await axios.post(
-        `https://Vid-Lib-Backend.sayuk.repl.co/playlist/update/${playlist._id}`,
-        {
-          video: video,
-        }
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  })();
+export function axiosAddVideoToPlaylist(
+  playlist,
+  video,
+  playlistDispatch,
+  auth,
+  toast
+) {
+  if (auth) {
+    (async function () {
+      try {
+        const response = await axios.post(
+          `https://Vid-Lib-API-Forked.sayuk.repl.co/playlist/update/${playlist._id}`,
+          {
+            video: video,
+          },
+          {
+            headers: {
+              "auth-token": auth.token,
+            },
+          }
+        );
+
+        // playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
+        toast("Video Added to Playlist", {
+          type: "success",
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  } else {
+    toast("Please Login", {
+      type: "error",
+    });
+  }
 }
 
-export function axiosDeleteVideoFromPlaylist(playlist, video) {
-  (async function () {
-    try {
-      const response = await axios.delete(
-        "https://Vid-Lib-Backend.sayuk.repl.co/playlist/delete",
-        {
-          playlistId: "60aa2bc1e9b21501dd28e0f9",
-          videoId: "60a36cb508c6be01521306e3",
-        }
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  })();
+export function axiosDeleteVideoFromPlaylist(playlist, video, auth) {
+  if (auth) {
+    (async function () {
+      try {
+        const response = await axios.delete(
+          "https://Vid-Lib-API-Forked.sayuk.repl.co/playlist/delete",
+          {
+            playlistId: playlist,
+            videoId: video,
+          },
+          {
+            headers: {
+              "auth-token": auth.token,
+            },
+          }
+        );
+        toast("Video Delete from Playlist", {
+          type: "success",
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  } else {
+    toast("Please Login", {
+      type: "error",
+    });
+  }
 }
